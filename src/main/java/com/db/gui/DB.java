@@ -10,7 +10,7 @@ public class DB {
 
         try{
             if(conn == null){
-                conn = DriverManager.getConnection("jdbc:sqlite::resource:" + "src/main/java/com/db/gui/Tasks.db");
+                conn = DriverManager.getConnection("jdbc:sqlite:C:/Users/diogo/IdeaProjects/Gui/src/main/java/com/db/gui/Tasks.db");
                 return conn;
             }else{
                 return conn;
