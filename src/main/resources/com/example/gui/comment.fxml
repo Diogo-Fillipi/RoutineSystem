@@ -5,12 +5,12 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gui.HelloController">
    <children>
-      <Button layoutX="70.0" layoutY="101.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="55.0" text="OK" />
-      <Button layoutX="173.0" layoutY="101.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="55.0" text="Cancel" />
-      <Label layoutX="126.0" layoutY="38.0" text="AAAAAA" />
-      <TextField layoutX="44.0" layoutY="62.0" prefHeight="26.0" prefWidth="212.0" />
+      <Button layoutX="70.0" layoutY="101.0" mnemonicParsing="false" onAction="#addComment" prefHeight="25.0" prefWidth="55.0" text="OK" />
+      <Button fx:id="closeButton" layoutX="173.0" layoutY="101.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="55.0" text="Cancel" />
+      <Label layoutX="88.0" layoutY="38.0" text="Escreva um comentário" />
+      <TextField fx:id="getText" layoutX="44.0" layoutY="62.0" prefHeight="26.0" prefWidth="212.0" />
       <Label layoutX="14.0" layoutY="5.0" text="Input" />
    </children>
 </AnchorPane>

@@ -20,8 +20,10 @@ import java.util.Map;
 
 import java.io.IOException;
 
+import static javafx.application.Application.launch;
 
-public class HelloApplication {
+
+public class HelloApplication extends Application   {
     Label labelField;
     TextArea textArea;
     TextField textField;
@@ -42,7 +44,7 @@ public class HelloApplication {
 
 
     public static void main(String[] args) {
-
+        launch();
 
     }
 
