@@ -33,29 +33,27 @@ public class HelloApplication extends Application   {
 
     Tab tab;
 
-    private Map<String, Label> dayToDos;
+    private Map<String, VBox> dayToDos;
 
     public void start(Stage stage) throws IOException {
         //Create the TabPane and the Tabs
         TabPane tabPane = new TabPane();
         String[] days={"Segunda-Feira", "Terça-Feira", "Quarta-Feira", "Quinta-Feira", "Sexta Feira", "Consultar"};
+        dayToDos = new HashMap<>();
 
-        for(int i = 0; i<days.length; i++ ){
+
+        for (String day : days) {
             VBox vbox = new VBox();
+            dayToDos.put(day, vbox);
+
             Button button = new Button("Adicionar um comentário");
-            button.setOnAction(event -> {
-                addTask(tabPane, days[0]);
-            });
+            button.setOnAction(event -> addTask(tabPane, day));
             button.setPrefHeight(35);
             button.setPrefWidth(800);
 
-            vbox.setAlignment(Pos.BOTTOM_CENTER);
-            vbox.getChildren().add(button);
-
-            tab = new Tab(days[i]);
-            tab.setClosable(false);
-            tab.setContent(vbox);
-            tabPane.getTabs().add(tab);
+            VBox dayContent = new VBox(button);
+            dayContent.setAlignment(Pos.BOTTOM_CENTER);
+            tabPane.getTabs().add(new Tab(day, dayContent));
         }
 
 
@@ -65,6 +63,7 @@ public class HelloApplication extends Application   {
 
 
     }
+
 
     public void addTask(TabPane tabPane, String days){
 
@@ -90,14 +89,12 @@ public class HelloApplication extends Application   {
         Optional<String> result = dialog.showAndWait();
         result.ifPresent(comment -> {
             // Encontre o Tab correspondente ao dia
-            for (Tab tab : tabPane.getTabs()) {
-                if (tab.getText().equals(days)) {
-                    TextArea tabContent = new TextArea();
-                    tabContent.setText(comment);
-                    tab.setContent(tabContent);
-                    break;
-                }
-            }
+            TextField tabContent = new TextField(comment);
+            tabContent.setEditable(false);
+            Tab selectedTab = tabPane.getSelectionModel().getSelectedItem();
+            VBox dayContent = (VBox) selectedTab.getContent();
+            dayContent.getChildren().add(tabContent);
+
         });
     }
     public static void main(String[] args) {
