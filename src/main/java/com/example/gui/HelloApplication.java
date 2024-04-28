@@ -38,6 +38,7 @@ public class HelloApplication extends Application   {
     public void start(Stage stage) throws IOException {
         //Create the TabPane and the Tabs
         TabPane tabPane = new TabPane();
+
         String[] days={"Segunda-Feira", "Terça-Feira", "Quarta-Feira", "Quinta-Feira", "Sexta Feira", "Consultar"};
         dayToDos = new HashMap<>();
 
@@ -51,9 +52,14 @@ public class HelloApplication extends Application   {
             button.setPrefHeight(35);
             button.setPrefWidth(800);
 
-            VBox dayContent = new VBox(button);
+            TextArea textArea = new TextArea();
+            ScrollPane scrollPane = new ScrollPane(textArea);
+
+            VBox dayContent = new VBox(scrollPane, button);
             dayContent.setAlignment(Pos.BOTTOM_CENTER);
+
             tabPane.getTabs().add(new Tab(day, dayContent));
+
         }
 
 
